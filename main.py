@@ -21,10 +21,7 @@ while incomplete:
     states_list = states_data.state.to_list()
     # IF THE USER ENTERS THE WORD "EXIT", WRITE ALL THE STATES THEY MISSED INTO ANOTHER CSV CALLED STATES_TO_LEARN.CSV
     if answer_state == "Exit":
-        missed = []
-        for state in states_list:
-            if state not in guess_list:
-                missed.append(state)
+        missed = [state for state in states_list if (state not in guess_list)]
         missed_states = pandas.DataFrame(missed)
         missed_states.to_csv("states_to_learn.csv")
         break
